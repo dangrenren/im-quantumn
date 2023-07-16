@@ -17,7 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="im-codec" options="-parameters" />
       <module name="im-common" options="-parameters" />
-      <module name="im-system" options="" />
+      <module name="im-system" options="-parameters" />
       <module name="im-tcp" options="-parameters" />
     </option>
   </component>

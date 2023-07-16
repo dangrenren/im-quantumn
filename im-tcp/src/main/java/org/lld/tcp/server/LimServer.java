@@ -8,7 +8,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.lld.codec.MeaasgeDecoder;
+import org.lld.codec.MessageEncoder;
+import org.lld.tcp.handler.HeartBeatHandler;
 import org.lld.tcp.handler.NettyServerHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +57,10 @@ public class LimServer {
                     protected void initChannel(SocketChannel ch) throws Exception {
                         System.out.println("initChannel "+ch);
                         ch.pipeline().addLast(new MeaasgeDecoder())
-                                     .addLast(new NettyServerHandler());
+                                .addLast(new MessageEncoder())
+                                .addLast(new IdleStateHandler(0,0,1))
+                                .addLast(new HeartBeatHandler((long) heartBeatTime))
+                                .addLast(new NettyServerHandler());
                         //ch.pipeline().addLast(new MessageEncoder());
 //                        ch.pipeline().addLast(new IdleStateHandler(
 //                                0, 0,

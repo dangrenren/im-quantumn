@@ -63,6 +63,13 @@
             <artifactId>amqp-client</artifactId>
         </dependency>
 
+        <!--使用springboot的rabbit连接，不用上面那个-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+
         <!-- feign调用依赖 -->
         <dependency>
             <groupId>com.netflix.feign</groupId>
@@ -85,8 +92,20 @@
             <groupId>org.lld</groupId>
             <artifactId>im-codec</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.lld</groupId>
+            <artifactId>im-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--引入springbboot Auctor监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
